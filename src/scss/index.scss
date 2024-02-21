@@ -1,0 +1,33 @@
+@import 'colors';
+@import 'distances';
+
+@mixin google-font($font-name) {
+  $font-name: str-replace($font-name, ' ', '+');
+  $font-name: unquote($font-name);
+  @import url('https://fonts.googleapis.com/css?family=#{$font-name}');
+}
+
+$font-name: 'Baloo 2';
+
+// usage: @include google-font($font-name);
+
+@mixin phone-screen {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+//usage: @include phone-screen {
+//  font-size: 1.5rem;
+//}
+
+// reset css for easy use
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-name, cursive;
+}
